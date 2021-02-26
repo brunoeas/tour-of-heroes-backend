@@ -76,7 +76,8 @@ public class HeroService {
      * @return Lista de DTO de Hero
      */
     public List<HeroDTO> findByName(final String term) {
-        return (List<HeroDTO>) this.heroConverter.entityListToDtoList(this.heroRepository.findByName(term));
+        final Iterable<Hero> entityList = this.heroRepository.findByName(term.trim());
+        return (List<HeroDTO>) this.heroConverter.entityListToDtoList(entityList);
     }
 
     /**
@@ -97,7 +98,8 @@ public class HeroService {
      * @return Lista de DTO de Hero
      */
     public List<HeroDTO> findAll() {
-        return (List<HeroDTO>) this.heroConverter.entityListToDtoList(this.heroRepository.findAll(Sort.by("nmHero")));
+        final Iterable<Hero> entityList = this.heroRepository.findAll(Sort.by("nmHero"));
+        return (List<HeroDTO>) this.heroConverter.entityListToDtoList(entityList);
     }
 
 }

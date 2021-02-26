@@ -17,7 +17,7 @@ import br.com.brunoeas.tourofheroes.entity.Hero;
 public interface HeroRepository extends CrudRepository<Hero, Integer> {
 
     /**
-     * Busca no banco os Heroes usando um termo para filtrar
+     * Busca no banco os Heroes filtrando pelo nome
      *
      * @param term - Termo/Nome
      * @return Lista de Heroes
@@ -30,8 +30,9 @@ public interface HeroRepository extends CrudRepository<Hero, Integer> {
     List<Hero> findByName(@Param("term") final String term);
 
     /**
-     * Busca no banco todos os Heroes ordenando pelo nome
+     * Busca no banco todos os Heroes com ordenação dinâmica
      *
+     * @param sort - Ordenação
      * @return Lista de Heroes
      */
     List<Hero> findAll(final Sort sort);
