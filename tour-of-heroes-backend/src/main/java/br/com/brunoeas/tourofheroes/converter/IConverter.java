@@ -19,7 +19,7 @@ public interface IConverter<E, D> {
      * @param orm - Referência do objeto Entidade que vai ser retornado
      * @return Entidade convertida
      */
-    E dtoToEntity(D dto, E orm);
+    E dtoToEntity(final D dto, final E orm);
 
     /**
      * Converte uma Entidade para o formato DTO usando uma referência de um objeto DTO já existente
@@ -28,7 +28,7 @@ public interface IConverter<E, D> {
      * @param dto - Referência do objeto DTO que vai ser retornado
      * @return DTO convertido
      */
-    D entityToDto(E orm, D dto);
+    D entityToDto(final E orm, final D dto);
 
     /**
      * @return Nova instância da Entidade.
