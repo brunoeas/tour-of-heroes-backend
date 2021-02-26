@@ -16,31 +16,31 @@ public class HeroConverter implements IConverter<Hero, HeroDTO> {
     /**
      * Converte um DTO para o formato Entidade usando uma referência de um objeto Entidade já existente
      *
-     * @param dto - DTO que vai ser convertido
-     * @param orm - Referência do objeto Entidade que vai ser retornado
+     * @param dto    - DTO que vai ser convertido
+     * @param entity - Referência do objeto Entidade que vai ser retornado
      * @return Entidade convertida
      */
     @Override
-    public Hero dtoToEntity(final HeroDTO dto, final Hero orm) {
+    public Hero dtoToEntity(final HeroDTO dto, final Hero entity) {
 
-        orm.setIdHero(dto.getIdHero());
-        orm.setNmHero(dto.getNmHero());
+        entity.setIdHero(dto.getIdHero());
+        entity.setNmHero(dto.getNmHero());
 
-        return orm;
+        return entity;
     }
 
     /**
      * Converte uma Entidade para o formato DTO usando uma referência de um objeto DTO já existente
      *
-     * @param orm - Entidade que vai ser convertida
-     * @param dto - Referência do objeto DTO que vai ser retornado
+     * @param entity - Entidade que vai ser convertida
+     * @param dto    - Referência do objeto DTO que vai ser retornado
      * @return DTO convertido
      */
     @Override
-    public HeroDTO entityToDto(final Hero orm, final HeroDTO dto) {
+    public HeroDTO entityToDto(final Hero entity, final HeroDTO dto) {
 
-        dto.setIdHero(orm.getIdHero());
-        dto.setNmHero(orm.getNmHero());
+        dto.setIdHero(entity.getIdHero());
+        dto.setNmHero(entity.getNmHero());
 
         return dto;
     }

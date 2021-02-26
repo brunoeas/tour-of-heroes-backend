@@ -15,20 +15,20 @@ public interface IConverter<E, D> {
     /**
      * Converte um DTO para o formato Entidade usando uma referência de um objeto Entidade já existente
      *
-     * @param dto - DTO que vai ser convertido
-     * @param orm - Referência do objeto Entidade que vai ser retornado
+     * @param dto    - DTO que vai ser convertido
+     * @param entity - Referência do objeto Entidade que vai ser retornado
      * @return Entidade convertida
      */
-    E dtoToEntity(final D dto, final E orm);
+    E dtoToEntity(final D dto, final E entity);
 
     /**
      * Converte uma Entidade para o formato DTO usando uma referência de um objeto DTO já existente
      *
-     * @param orm - Entidade que vai ser convertida
-     * @param dto - Referência do objeto DTO que vai ser retornado
+     * @param entity - Entidade que vai ser convertida
+     * @param dto    - Referência do objeto DTO que vai ser retornado
      * @return DTO convertido
      */
-    D entityToDto(final E orm, final D dto);
+    D entityToDto(final E entity, final D dto);
 
     /**
      * @return Nova instância da Entidade.
@@ -58,16 +58,16 @@ public interface IConverter<E, D> {
     /**
      * Converte uma Entidade para o formato DTO.
      *
-     * @param orm - Entidade que vai ser convertida
+     * @param entity - Entidade que vai ser convertida
      * @return DTO convertido
      */
-    default D entityToDto(final E orm) {
-        if (orm == null) {
+    default D entityToDto(final E entity) {
+        if (entity == null) {
             return null;
         }
 
         final D dto = this.getDtoNewInstance();
-        return this.entityToDto(orm, dto);
+        return this.entityToDto(entity, dto);
     }
 
     /**
@@ -86,14 +86,14 @@ public interface IConverter<E, D> {
     /**
      * Converte uma lista de Entidades para uma lista de DTO.
      *
-     * @param ormList - Lista de Entidades
+     * @param entityList - Lista de Entidades
      * @return Lista de DTO's convertidos
      */
-    default Iterable<D> entityListToDtoList(final Iterable<E> ormList) {
-        if (ormList == null) {
+    default Iterable<D> entityListToDtoList(final Iterable<E> entityList) {
+        if (entityList == null) {
             return null;
         }
-        return StreamSupport.stream(ormList.spliterator(), false).map(this::entityToDto).collect(Collectors.toList());
+        return StreamSupport.stream(entityList.spliterator(), false).map(this::entityToDto).collect(Collectors.toList());
     }
 
 }
